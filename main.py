@@ -2,39 +2,6 @@ from app import *
 from modules.user import User, Create_User
 from modules.forms import Login_Form
 
-@app.route("/logout", methods = ["post"])
-def logout():
-    pass
-
-@app.route("/potions", methods = ["get"])
-def potions():
-    pass
-
-@app.route("/ingrediants", methods = ["get"])
-def ingrediants():
-    pass
-
-@app.route("/search", methods = ["post"])
-def search():
-    form = Search_Form()
-
-    if form.creature.data and form.environment.data:
-        error = "Select One or The Other Creature or Environment"
-        return render_template("search.html", form = form, error = error)
-
-    elif not form.creature.data and not form.environment.data:
-        error = "You must Select an Environment or Creature"
-        return render_template("search.html", form = form, error = error)
-    
-    else:
-        pass
-
-@app.route("/search", methods = ["get"])
-def home():
-    form = Search_Form()
-
-    return render_template("search.html", form = form)
-
 @app.route("/new_user", methods = ["post"])
 def create_user():
     form = Login_Form()

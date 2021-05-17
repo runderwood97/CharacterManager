@@ -1,34 +1,31 @@
-  
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}" />
-        <title>Login</title>
+        <title>Create Account</title>
     </head>
     <body>
         <div class = "login_container">
             <div class = "inner_div">
-                <h1>Login</h1>
+                <h1>Create Account</h1>
             </div>
             {% if error: %}
                 <div class = "inner_div">
                     {{ error }}
                 </div>
             {% endif %}
-            <form action="{{ url_for('validate_user') }}" method="POST">
+            <form action="{{ url_for('new_user') }}" method="POST">
                 {{ form.csrf_token }}
                 <div class = "inner_div">
                     {{ form.identifier }}
                 </div>
                 <div class = "inner_div">
+                    {{ form.email }}
+                </div>
+                <div class = "inner_div">
                     {{ form.password }}
                 </div>
-                <button type = "submit" id = "login_button">Login</button>
+                <button type = "submit" class = "create_user_button">Create User</button>
             </form>
-            <div class = "form_container">
-                <form action = "{{ url_for('new_user') }}" method = "GET">
-                    <button type = "submit" class = "create_user_button">Create User</button>
-                </form>
-            </div>
         </div>
     </body>
 </html>
