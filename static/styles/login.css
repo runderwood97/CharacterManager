@@ -1,0 +1,40 @@
+body { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 30vw;
+    height: 5vh;
+}
+
+button {
+    width: 30vw;
+    height: 5vh;
+    margin-top: 1vh;
+    margin-left: 10vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login_container {
+    background-color: #f2f2f2;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 40vh;
+}
+
+.inner_div {
+    margin-top: 2vh;
+    margin-left: 10vw;
+}
+
+.create_user_button {
+    background-color: #ff4d4d;
+}
+
+#login_button {
+    background-color: #1ad1ff;
+}
