@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>5e Character Management</title>
+        
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='styles/base.css') }}" />
+    </head>
+    <body>
+        <div id = "nav">
+            <span>
+                <a href = "{{ url_for('get_character_dashboard') }}">Characters</a>
+            </span>
+            <span>
+                <a href = "{{ url_for('character_creation') }}">Create Character</a>
+            </span>
+        </div>
+        <div id = "content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

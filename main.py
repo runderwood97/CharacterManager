@@ -2,6 +2,25 @@ from app import *
 from modules.user import User, Create_User
 from modules.forms import Login_Form
 
+######################################################################
+################### CHARACTER CREATION ###############################
+######################################################################
+@app.route("/character_creation")
+@login_required
+def character_creation():
+    return render_template("character_creation.html")
+
+######################################################################
+################### CHARACTER DASHBOARD ##############################
+######################################################################
+@app.route("/get_character_dashboard")
+@login_required
+def get_character_dashboard():
+    return render_template("character_dashboard.html")
+
+######################################################################
+################### CREATE ACCOUNT ###################################
+######################################################################
 @app.route("/new_user", methods = ["post"])
 def create_user():
     form = Login_Form()
@@ -26,6 +45,9 @@ def new_user():
 def load_user(id):
     return User(id)
 
+######################################################################
+############################ LOGIN ###################################
+######################################################################
 @app.route("/", methods = ["post"])
 def validate_user():
     form = Login_Form()

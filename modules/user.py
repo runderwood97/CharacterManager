@@ -4,32 +4,22 @@ from modules.connections import connection
 
 class User(UserMixin):
 
-    def __init__(self, id: int):
+    def __init__(self, id: int) -> None:
         self.id = id
-    
-    def get_username(self) -> str:
-        username = ""
+        self.__username = ""
+        self.__email = ""
 
+        self.__set_user()
+
+    def __set_user(self) -> None:
         with connection:
             cursor = connection.cursor()
-            cursor.execute("SELECT Username FROM Users WHERE ID = ?", self.id)
+            cursor.execute("SELECT Username, Email FROM Users WHERE ID = ?", self.id)
 
             record = cursor.fetchone()
-            username = record.Username
 
-        return username
-
-    def get_email(self) -> str:
-        email = ""
-
-        with connection:
-            cursor = connection.cursor()
-            cursor.execute("SELECT Email FROM Users WHERE ID = ?", self.id)
-
-            record = cursor.fetchone()
-            email = record.Email
-
-        return email
+            self.__username = record.Username
+            self.__email = record.Email
 
     def __repr__(self) -> int:
         return self.id
