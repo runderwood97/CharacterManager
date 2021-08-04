@@ -84,10 +84,10 @@ class Create_User:
         
         return found
 
-    def create_user(self):
+    def create_user(self) -> None:
         with connection:
             cursor = connection.cursor()
             cursor.execute("""INSERT INTO Users(Username, Email, Password) 
                             values(?, ?, ?)""", self.__username, self.__email, self.__password)
 
-        connection.commit()
+            connection.commit()

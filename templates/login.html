@@ -1,33 +1,47 @@
   
 <html>
     <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}" />
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}" /> -->
         <title>Login</title>
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}" />
     </head>
     <body>
-        <div class = "login_container">
-            <div class = "inner_div">
-                <h1>Login</h1>
-            </div>
-            {% if error: %}
-                <div class = "error">
-                    {{ error }}
+        <div class = "container">
+            <div class = "center-div">
+
+                {% if error: %}
+                    <div class = "row">
+                        <div class = col>
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                             </div>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <div class = "row">
+                    <form action = "{{ url_for('validate_user') }}" method = "POST">
+                        <div class = "col">
+                            {{ form.identifier.label(class_ = "form-control-label") }}
+                            {{ form.identifier(class_ = "form-control") }}
+                        </div>
+                        <div class = "col">
+                            {{ form.email.label(class_ = "form-control-label") }}
+                            {{ form.email(class_ = "form-control") }}
+                        </div>
+                        <div class = "col">
+                            {{ form.password.label(class_ = "form-control-label") }}
+                            {{ form.password(class_ = "form-control") }}
+                        </div>
+                        <div class = "col">
+                            <input type = "submit" value = "Login" class = "btn btn-primary">
+                        </div>
+                    </form>
                 </div>
-            {% endif %}
-            <form action="{{ url_for('validate_user') }}" method="POST">
-                {{ form.csrf_token }}
-                <div class = "inner_div">
-                    {{ form.identifier }}
-                </div>
-                <div class = "inner_div">
-                    {{ form.password }}
-                </div>
-                <button type = "submit" id = "login_button">Login</button>
-            </form>
-            <div class = "form_container">
-                <form action = "{{ url_for('new_user') }}" method = "GET">
-                    <button type = "submit" class = "create_user_button">Create User</button>
-                </form>
             </div>
         </div>
     </body>

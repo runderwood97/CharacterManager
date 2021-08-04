@@ -13,9 +13,9 @@ def character_creation():
 ######################################################################
 ################### CHARACTER DASHBOARD ##############################
 ######################################################################
-@app.route("/get_character_dashboard")
+@app.route("/character_dashboard")
 @login_required
-def get_character_dashboard():
+def character_dashboard():
     return render_template("character_dashboard.html")
 
 ######################################################################
@@ -57,7 +57,7 @@ def validate_user():
         user = User(user_id)
         login_user(user)
 
-        return redirect(url_for("home"))
+        return redirect(url_for("character_dashboard"))
 
     error = "Incorrect Username or Password"
 
