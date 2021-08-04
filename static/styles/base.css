@@ -1,0 +1,20 @@
+body {
+    display: grid;
+    grid-template-areas: "navigation"
+                        "content";
+    margin: 0;
+}
+
+#nav {
+    grid-area: navigation;
+    width: 100vw;
+    height: 10vh;
+    background-color: lavender;
+}
+
+#content {
+    grid-area: content;
+    width: 100vw;
+    height: 90vh;
+    background-color: lightcoral;
+}
